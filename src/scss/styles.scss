@@ -1,0 +1,85 @@
+@import ".variables.scss";
+@import "reset.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+.main__grid {
+  background-color: $bg;
+
+  height: 100vh;
+  display: grid;
+  gap: 1px;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-rows: 1fr 6fr 1fr;
+  color: $bg;
+  font-size: 40px;
+}
+
+.main__grid > * {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s linear, background-color 0.3s linear;
+  &:hover:not(.row__number) {
+    cursor: pointer;
+    color: white;
+    background-color: $bg;
+  }
+}
+
+.row__number {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  background-color: $bg;
+  gap: 1px;
+}
+.row__number > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  transition: color 0.3s linear, background-color 0.3s linear;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: $bg;
+  }
+}
+
+.center__picture {
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-200px);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(-200px);
+  }
+}
+
+.scroll__word {
+  grid-column-start: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  span {
+    animation: scroll 5s linear infinite forwards;
+  }
+}
